@@ -1,6 +1,10 @@
 # 🚀 InterviewForge — Prepare. Practice. Improve.
 ### *Personalized Campus Placement & Interview Prep Platform for Indian Freshers*
 
+[![Live Demo](https://img.shields.io/badge/Demo-Live%20on%20GitHub%20Pages-brightgreen?style=for-the-badge&logo=github)](https://ramcharanpusapally03.github.io/InterviewForge/)
+
+🌐 **Live Deployment:** [https://ramcharanpusapally03.github.io/InterviewForge/](https://ramcharanpusapally03.github.io/InterviewForge/)
+
 ![Platform Status](https://img.shields.io/badge/Status-Production%20Ready-success)
 ![Built For](https://img.shields.io/badge/Audience-Indian%20College%20Freshers-blue)
 ![Zero Dependency](https://img.shields.io/badge/Dependencies-Zero%20Install-brightgreen)
