@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InterviewForge — Prepare. Practice. Improve. | Placement Prep for Indian Freshers</title>
+  <meta name="description" content="Personalized campus placement and interview preparation platform for Indian college students and freshers. Practice TCS, Infosys, Wipro, Accenture, and SDE rounds, defend your project viva, and track readiness.">
+  <meta name="theme-color" content="#0b0f19">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Document Parsers (PDF.js for .pdf, Mammoth.js for .docx) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+
+  <!-- Core & Component Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <!-- Ambient Background Glow -->
+  <div class="ambient-glow"></div>
+
+  <!-- App Header & Navigation Bar -->
+  <header class="app-header">
+    <a href="#" class="brand-wrapper" onclick="window.app?.switchTab('placement'); return false;">
+      <div class="brand-logo-icon">
+        <i class="fa-solid fa-fire-flame-curved"></i>
+      </div>
+      <div class="brand-text-col">
+        <h1>InterviewForge</h1>
+        <span class="brand-tagline">Prepare. Practice. Improve.</span>
+      </div>
+    </a>
+
+    <!-- Top Navigation Tabs -->
+    <nav class="app-nav-tabs" aria-label="Main Navigation">
+      <button class="nav-tab-btn active" data-tab="daily">
+        <i class="fa-solid fa-mug-hot"></i> <span>Daily Workout</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="placement">
+        <i class="fa-solid fa-building-user"></i> <span>Career Arena</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="mock">
+        <i class="fa-solid fa-headset"></i> <span>Mock Room</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="viva">
+        <i class="fa-solid fa-graduation-cap"></i> <span>Project Viva</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="weakness">
+        <i class="fa-solid fa-stethoscope"></i> <span>Weakness Clinic</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="resume">
+        <i class="fa-solid fa-file-waveform"></i> <span>Resume Matcher</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="dashboard">
+        <i class="fa-solid fa-chart-line"></i> <span>Readiness Index</span>
+      </button>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="header-actions">
+      <button class="btn btn-outline btn-sm" id="open-analyzer-btn" style="border-color: rgba(59, 130, 246, 0.4); background: rgba(59, 130, 246, 0.1);">
+        <i class="fa-solid fa-wand-magic-sparkles text-accent"></i> <span>Analyze CV / Pick Role</span>
+      </button>
+      <span class="badge badge-warning" title="Daily Practice Streak">
+        <i class="fa-solid fa-fire"></i> <span id="topbar-streak-count">1</span> Day Streak
+      </span>
+      <button class="icon-btn" id="theme-toggle-btn" title="Toggle Dark/Light Mode">
+        <i class="fa-solid fa-sun" id="theme-toggle-icon"></i>
+      </button>
+      <button class="icon-btn" id="open-settings-btn" title="Settings & AI Configuration">
+        <i class="fa-solid fa-gear"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Viewport Wrapper -->
+  <main class="main-wrapper">
+    <!-- Quick Personalized Plan Discovery Banner -->
+    <div class="analyzer-hero-banner" id="analyzer-hero-banner">
+      <div class="ahb-content">
+        <div class="ahb-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <div>
+          <h4>Discover Your Eligible Companies & Career Roles</h4>
+          <p class="small text-muted">Paste your CV or portfolio to get a tailored interview practice plan, or choose your target company manually.</p>
+        </div>
+      </div>
+      <div class="ahb-actions">
+        <button class="btn btn-primary btn-sm" id="banner-analyze-cv-btn">
+          <i class="fa-solid fa-file-waveform"></i> Analyze CV / Portfolio
+        </button>
+        <button class="btn btn-outline btn-sm" id="banner-manual-select-btn">
+          <i class="fa-solid fa-list-check"></i> Select Role Manually
+        </button>
+      </div>
+    </div>
+    <!-- View 0: Daily Interview Workout -->
+    <section id="daily-view" class="tab-content-pane active" aria-label="Daily Interview Workout"></section>
+
+    <!-- View 1: Placement Arena -->
+    <section id="placement-view" class="tab-content-pane" aria-label="Career & Placement Arena"></section>
+
+    <!-- View 2: Mock Interview Room -->
+    <section id="mock-view" class="tab-content-pane" aria-label="Mock Interview Room"></section>
+
+    <!-- View 3: Project Viva Trainer -->
+    <section id="viva-view" class="tab-content-pane" aria-label="Project Viva Defense Studio"></section>
+
+    <!-- View 4: Weakness Clinic -->
+    <section id="weakness-view" class="tab-content-pane" aria-label="Weakness Clinic & Concept Explainer"></section>
+
+    <!-- View 5: Resume Matcher -->
+    <section id="resume-view" class="tab-content-pane" aria-label="Resume to Job Matcher"></section>
+
+    <!-- View 6: Readiness Dashboard -->
+    <section id="dashboard-view" class="tab-content-pane" aria-label="Readiness Dashboard"></section>
+  </main>
+
+  <!-- Global Settings & Profile Modal -->
+  <div class="modal-backdrop" id="settings-modal" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-sliders text-accent"></i> InterviewForge Preferences</h3>
+        <button class="btn-close-modal" id="close-settings-modal-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Candidate Name</label>
+          <input type="text" id="setting-candidate-name" class="form-control" placeholder="e.g. Ramcharan Pusapally">
+        </div>
+        <div class="form-group">
+          <label>Target Dream Role & Package</label>
+          <input type="text" id="setting-target-role" class="form-control" placeholder="e.g. TCS Digital (7.5 LPA) or SDE-1">
+        </div>
+        <div class="form-group">
+          <label>College / University</label>
+          <input type="text" id="setting-college" class="form-control" placeholder="e.g. Lovely Professional University (LPU)">
+        </div>
+
+        <hr style="border-color: var(--border-color); margin: 1.5rem 0;">
+
+        <div class="form-group">
+          <label><i class="fa-solid fa-wand-magic-sparkles text-accent"></i> Google Gemini API Key (Optional)</label>
+          <input type="password" id="setting-gemini-key" class="form-control" placeholder="AIzaSy... (Leave empty for offline evaluation engine)">
+          <p class="small text-muted" style="margin-top: 0.35rem;">
+            If provided, your answers receive live generative critique and dynamic follow-up grilling. If omitted, InterviewForge uses its built-in enterprise rubric engine without external network dependencies.
+          </p>
+        </div>
+
+        <div class="form-group" style="display: flex; align-items: center; justify-content: space-between;">
+          <div>
+            <label style="margin-bottom: 0;">Beginner Mode</label>
+            <p class="small text-muted">Show immediate step-by-step mathematical & code explanations after each question.</p>
+          </div>
+          <input type="checkbox" id="setting-beginner-mode" style="width: 20px; height: 20px; accent-color: var(--accent-primary);">
+        </div>
+
+        <div class="form-group" style="margin-top: 1rem;">
+          <label>Voice Audio Synthesizer (Web Speech)</label>
+          <button class="btn btn-outline btn-sm" id="test-voice-btn">
+            <i class="fa-solid fa-volume-high"></i> Test Interviewer Voice
+          </button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" id="save-settings-btn">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Onboarding & CV Analyzer Modal -->
+  <div class="modal-backdrop" id="onboarding-modal" style="display: none;">
+    <div class="modal-dialog modal-lg">
+      <!-- Injected dynamically by OnboardingAnalyzer -->
+    </div>
+  </div>
+
+  <!-- Toast Notification Anchor -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- App Entry Script -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
